@@ -3,7 +3,8 @@ import MyComponent from "./MyComponent"; //컴포넌트를 불러 온다.
 import Counter from "./Counter";
 import Say from "./Say";
 import EventPractice from "./EvnetPractice";
-
+import ValidationSaple from "./ValidationSample";
+import ScrollBox from "./ScrollBox";
 // 클래스형 컴포넌트
 // 1. 라이프 사이클 이용 가능
 // 2. 임이의 메서드 사용 가능.
@@ -22,18 +23,35 @@ import EventPractice from "./EvnetPractice";
 //   }
 // }
 
-const App = () => {
-  //   //사용하는 컴포넌트에 넘겨 줄 props값
-  //   return <MyComponent name="bong" />;
-  //   //컴포넌트 태그 사이에 내용을 보여주는 props.
-  //   return (
-  //     <MyComponent name="bong" number="7">
-  //       Children
-  //     </MyComponent>
-  //   );
-  //   return <Counter />;
-  //   return <Say />;
-  return <EventPractice />;
-};
+// const App = () => {
+//   //   //사용하는 컴포넌트에 넘겨 줄 props값
+//   //   return <MyComponent name="bong" />;
+//   //   //컴포넌트 태그 사이에 내용을 보여주는 props.
+//   //   return (
+//   //     <MyComponent name="bong" number="7">
+//   //       Children
+//   //     </MyComponent>
+//   //   );
+//   //   return <Counter />;
+//   //   return <Say />;
+//   //   return <EventPractice />;
+//   //   return <ValidationSaple />;
+//   return <ScrollBox />;
+// };
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollBox ref={ref => (this.scrollBox = ref)} />
+        {/* 문법상으로는 onClikc ={this.scrollBox.scrollToBottom()} 이런 식으로 작성해도 문제 되지 않으나
+            처음에는 undefinded로 지정되어 있기 때문에 오류를 내 뿜는다.
+            
+            그래서 화살표 함수를 사용해서 아예 새로운 함수를 만들고 그 내부에서 함수를 실행한다.*/}
+        <button onClick={() => this.scrollBox.scrollToBottom()}>Bottom</button>
+      </div>
+    );
+  }
+}
 
 export default App;
