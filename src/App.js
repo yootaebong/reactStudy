@@ -2,6 +2,7 @@ import React from "react";
 import MyComponent from "./MyComponent"; //컴포넌트를 불러 온다.
 import Counter from "./Counter";
 import Say from "./Say";
+import EventPractice from "./EvnetPractice";
 
 // 클래스형 컴포넌트
 // 1. 라이프 사이클 이용 가능
@@ -31,7 +32,8 @@ const App = () => {
   //     </MyComponent>
   //   );
   //   return <Counter />;
-  return <Say />;
+  //   return <Say />;
+  return <EventPractice />;
 };
 
 export default App;

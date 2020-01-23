@@ -17,6 +17,7 @@ const Say = () => {
 
   return (
     <div>
+      {/* 리엑트에서는 이벤트는 함수 형태의 객체를 전달하게 된다. */}
       <button onClick={onClickEnter}>Enter</button>
       <button onClick={onClickLeve}>Leave</button>
       <h1 style={{ color }}>{msg}</h1>
