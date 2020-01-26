@@ -6,6 +6,8 @@ import EventPractice from "./EvnetPractice";
 import ValidationSaple from "./ValidationSample";
 import ScrollBox from "./ScrollBox";
 import IterationSample from "./IterationSample";
+import LifeCycleSample from "./LifeCycleSample";
+import ErrorBoundary from "./ErrorBoundary";
 // 클래스형 컴포넌트
 // 1. 라이프 사이클 이용 가능
 // 2. 임이의 메서드 사용 가능.
@@ -39,8 +41,21 @@ import IterationSample from "./IterationSample";
 //   //   return <ValidationSaple />;
 //   return <ScrollBox />;
 // };
+function getRandomColor() {
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
 
 class App extends React.Component {
+  state = {
+    color: "#000000"
+  };
+
+  handleClick = () => {
+    this.setState({
+      color: getRandomColor()
+    });
+  };
+
   render() {
     return (
       //   <div>
@@ -51,7 +66,13 @@ class App extends React.Component {
       //         그래서 화살표 함수를 사용해서 아예 새로운 함수를 만들고 그 내부에서 함수를 실행한다.*/}
       //     <button onClick={() => this.scrollBox.scrollToBottom()}>Bottom</button>
       //   </div>
-      <IterationSample />
+      // <IterationSample />
+      <div>
+        <button onClick={this.handleClick}>random color</button>
+        <ErrorBoundary>
+          <LifeCycleSample color={this.state.color} />
+        </ErrorBoundary>
+      </div>
     );
   }
 }
