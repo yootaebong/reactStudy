@@ -1,7 +1,14 @@
-@import "./styles/utils";
+@import "utils";
+//모듈에서 라이브러리를 불러 올 때, 해당 폴더까지 찾아서 들어가야하는데 ~를 쓰게 되면 라이브러리에서 탐색하게 된다.
+@import "~include-media/dist/include-media";
+@import "~open-color/open-color";
 
 .SassComponent {
   display: flex;
+  background: $oc-gray-2;
+  @include media("<768px") {
+    background: $oc-gray-9;
+  }
   .box {
     //일반 css에서 -> .SassComponent .box와 같은 일을 한다.
     background: red;
