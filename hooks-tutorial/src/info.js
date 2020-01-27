@@ -1,4 +1,5 @@
 import React from "react";
+import useInput from "./useInputs";
 
 function reducer(state, action) {
   return {
@@ -51,16 +52,22 @@ const Info = () => {
   //     </div>
   //   );
 
-  const [state, dispatch] = React.useReducer(reducer, {
+  // const [state, dispatch] = React.useReducer(reducer, {
+  //   name: "",
+  //   nickname: ""
+  // });
+
+  //custom hook 만들어서 로직 공유. (재사용의 이점이 있다.)
+  const [state, onChange] = useInput({
     name: "",
     nickname: ""
   });
   const { name, nickname } = state;
 
-  //객체가 지니고 있는 e.tartget값 그 자체를 넘겨서 액션 값으로 사용을 했다.
-  const onChange = e => {
-    dispatch(e.target);
-  };
+  // //객체가 지니고 있는 e.tartget값 그 자체를 넘겨서 액션 값으로 사용을 했다.
+  // const onChange = e => {
+  //   dispatch(e.target);
+  // };
   return (
     <div>
       <div>
