@@ -43,7 +43,9 @@ const App = () => {
   const onRemove = useCallback(
     id => {
       setTodos(todos.filter(todo => todo.id !== id));
-    },
+    },//sumit 이벤트는 브라우저 새로고침을 발생시키는데 그것을 방지하기위해서
+      //함수를 호출해준다.
+      e.preventDefault();
     [todos],
   );
 
