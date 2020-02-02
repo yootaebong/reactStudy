@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import axios from 'axios';
 import NewsList from './component/NewsList';
+import Categories from './component/Categories';
+import { Route } from 'react-router-dom';
+import NewsPage from './pages/NewsPage';
 
 // const App = () => {
 //   const [data, setData] = useState(null);
 //   const onClick = async () => {
 //     try {
 //       const response = await axios.get(
-//         'https://newsapi.org/v2/top-headlines?country=kr&category=technology&apiKey=9a8b41d6457e44debd42d8b8f98cada4',
+//          '',
 //       );
 //       setData(response);
 //     } catch (e) {
@@ -31,8 +34,19 @@ import NewsList from './component/NewsList';
 //   );
 // };
 
-const App = () => {
-  return <NewsList />;
-};
+// const App = () => {
+//   const [category, setCategory] = useState('all');
+//   const onSelect = useCallback(category => setCategory(category), []);
 
+//   return (
+//     <>
+//       <Categoris category={category} onSelect={onSelect} />
+//       <NewsList category={category} />
+//     </>
+//   );
+// };
+
+const App = () => {
+  return <Route path="/:category?" component={NewsPage} />;
+};
 export default App;
