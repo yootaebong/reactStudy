@@ -13,8 +13,15 @@ const SampleContinser = ({
   loadingUsers
 }) => {
   useEffect(() => {
-    getPost(1);
-    getUsers(1);
+    const fn = async () => {
+      try {
+        getUsers(1);
+        getPost(1);
+      } catch (e) {
+        console.log(e); //error log
+      }
+    };
+    fn();
   }, [getPost, getUsers]);
 
   return (
@@ -28,11 +35,11 @@ const SampleContinser = ({
 };
 
 export default connect(
-  ({ sample }) => ({
+  ({ sample, loading }) => ({
     post: sample.post,
     users: sample.users,
-    loadingPost: sample.loading.GET_POST,
-    loadingUsers: sample.loading.GET_USERS
+    loadingPost: loading.GET_POST,
+    loadingUsers: loading.GET_USERS
   }),
   {
     getPost,

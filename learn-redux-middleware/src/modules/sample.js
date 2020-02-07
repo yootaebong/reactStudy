@@ -4,11 +4,11 @@ import createRequestThunk from "../lib/createRequestThunk";
 
 const GET_POST = "sample/GET_POST";
 const GET_POST_SUCCESS = "sample/GET_POST_SUCCESS";
-const GET_POST_FAILURE = "sample/GET_POST_FAILURE";
+// const GET_POST_FAILURE = "sample/GET_POST_FAILURE";
 
-const GET_USERS = " sample/GET_USERS";
+const GET_USERS = "sample/GET_USERS";
 const GET_USERS_SUCCESS = "sample/GET_USERS_SUCCESS";
-const GET_USERS_FAILURE = "sample/GET_USERS_FAILURE";
+// const GET_USERS_FAILURE = "sample/GET_USERS_FAILURE";
 
 //코드가 매우 복잡하기 때문에 따로 불리해서 사용하한다
 // export const getPost = id => async dispatch => {
@@ -49,27 +49,20 @@ const GET_USERS_FAILURE = "sample/GET_USERS_FAILURE";
 // };
 
 //위와 동일한 코드
-export const getPost = createRequestThunk(GET_POST, api.getPost);
 export const getUsers = createRequestThunk(GET_USERS, api.getUsers);
+export const getPost = createRequestThunk(GET_POST, api.getPost);
 
 export const initialState = {
   loading: {
     GET_POST: false,
     GET_USERS: false
   },
-  post: null,
-  users: null
+  users: null,
+  post: null
 };
 
 const sample = handleActions(
   {
-    [GET_POST]: state => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_POST: true
-      }
-    }),
     [GET_POST_SUCCESS]: (state, action) => ({
       ...state,
       loading: {
@@ -78,20 +71,6 @@ const sample = handleActions(
       },
       post: action.payload
     }),
-    [GET_POST_FAILURE]: (state, action) => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_POST: false
-      }
-    }),
-    [GET_USERS]: state => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_USERS: true
-      }
-    }),
     [GET_USERS_SUCCESS]: (state, action) => ({
       ...state,
       loading: {
@@ -99,13 +78,6 @@ const sample = handleActions(
         GET_USERS: false
       },
       users: action.payload
-    }),
-    [GET_USERS_FAILURE]: (state, action) => ({
-      ...state,
-      loading: {
-        ...state.loading,
-        GET_USERS: false
-      }
     })
   },
   initialState
