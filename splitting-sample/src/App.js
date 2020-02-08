@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import loadable from "@loadable/component";
-// // import notify from "./notify";
+// import notify from "./notify";
 
 const SplitMe = loadable(() => import("./SplitMe"), {
   fallback: <div>loading...</div>
@@ -37,5 +37,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
