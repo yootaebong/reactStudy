@@ -13,6 +13,7 @@ const App = () => {
       <Route path="/red" component={RedPage} />
       <Route path="/blue" component={BluePage} />
       <Route path="/users" component={UsersPage} />
+      <hr />
     </div>
   );
 };

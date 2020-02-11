@@ -15,7 +15,7 @@ const UsersContainer = ({ users, getUsers }) => {
 
   return (
     <>
-      <Users users={users} />;
+      <Users users={users} />
       <Preloader resolve={getUsers} />
     </>
   );
